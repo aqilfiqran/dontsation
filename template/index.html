@@ -1,16 +1,85 @@
-{% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>halaman utama</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>DonStation</title>
 </head>
 
-<body>
-    <h1>Hello {{name}}</h1>
+<body style="background: #f9f3ec;>
+  <!-- navbar -->
+  <div class=" page1">
+    <header>
+        <img class="logo" src="img/donStation.png" height="100dp" weight="100dp" alt="">
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Donasi</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+        <a href="" class="cta"><button type="button" name="button">Panti Asuhan</button></a>
+        <a href="" class="cta"><button type="button" name="button">Disabilitas</button></a>
+    </header>
+    <h1 class="text-center" id="ayoDonasi">Ayo Donasi</h1>
+    </div>
+    <!-- Akhir navbar -->
+
+    <div class="page2 text-center" id="page2">
+        <h1 class="apaitudonasi">Apa itu DonStation?</h1>
+
+        <p>Donasi adalah sebuah website untuk membantu penyandang disabilitas yang kurang mampu dalam mendapatkan
+            pelayanan yang maksimal.</p>
+    </div>
+
+    <!-- our team -->
+    <div class="about-us">
+        <div class="team-section">
+            <h1>Our Team</h1>
+            <span class="border"></span>
+            <div class="ps">
+                <a href="#p1"><img src="img/p1.png" weight="100px" height="100px" alt=""></a>
+                <a href="#p2"><img src="img/p2.png" weight="100px" height="100px" alt=""></a>
+            </div>
+
+            <div class="section text-center" id="p1">
+                <span class="name">Aqil Fiqran Dziul Haq</span>
+                <span class="border"></span>
+                <p>
+                    Aqil adalah mahasiswa Informatika Unsyiah, Aqil juga alumni dari SMAN 1 Banda Aceh
+                </p>
+            </div>
+            <div class="section text-center" id="p2">
+                <span class="name">Abi Farhan</span>
+                <span class="border"></span>
+                <p>
+                    Abi adalah mahasiswa Informatika Unsyiah, Abi juga alumni dari SMAN Modal Bangsa Arun Lhokseumawe
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- akhir our team -->
+
+    <div class="hak-paten text-center">
+        <h3>© Copyright by Sans</h3>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
