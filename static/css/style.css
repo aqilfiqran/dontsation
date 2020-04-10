@@ -1,9 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: 'montserrat';
+  /* background-color: white; */
+  background-color: rgb(81, 82, 73);
+  color: white;
 }
 
-h1 {
-    background-color: pink;
+/* navbar */
+.navbar {
+  width: 100%;
+  box-sizing: border-box;
 }
+
+.navbar-brand img {
+  width: 4em;
+  height: 3em;
+}
+
+nav {
+  font-family: sans-serif;
+  height: 80px !important;
+  font-size: 1.2em;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(125, 126, 123);
+  transition: .5s;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: rgb(255, 255, 255);
+}
+
+.bg-custom {
+  background-color: rgb(81, 82, 73);
+  box-shadow: 0 0 10px 0 rgb(59, 59, 59),
+    0 0 10px 0 rgb(81, 82, 73) inset;
+}
+
+.active>.nav-link {
+  color: rgb(255, 255, 255) !important;
+}
+
+.dropdown-menu {
+  background-color: rgb(114, 114, 114);
+  box-sizing: border-box;
+}
+
+.dropdown-menu .dropdown-item {
+  color: rgb(172, 172, 172);
+  transition: .8s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(114, 114, 114);
+}
+
+nav .form-control {
+  transition: .8s;
+  background: rgb(187, 187, 187);
+  box-shadow: 0 0 5px 0 rgb(163, 163, 163) inset;
+  border: none;
+}
+
+nav .form-control:focus {
+  background: rgb(226, 226, 226);
+}
+
+.btn-outline-custom {
+  border-color: rgb(125, 126, 123);
+  color: rgb(125, 126, 123);
+}
+
+.btn-outline-custom:hover {
+  color: white;
+  background-color: rgb(125, 126, 123);
+}
+
+/* end navbar */
+
+/* banner  */
+.banner {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+
+.banner-shape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.carousel-inner {
+  height: 500px;
+}
+
+.banner .carousel-inner::after {
+  content: '';
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.banner-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.banner-heading .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 0;
+  height: 150px;
+  font-size: 5em;
+  line-height: 150px;
+  border-radius: 50px;
+}
+
+.btn-outline-custom:hover {
+  color: white;
+  background-color: rgb(81, 82, 73);
+  box-shadow:
+    0 0 10px 0 rgb(115, 116, 108),
+    0 0 15px 0 rgb(115, 116, 108);
+}
+
+@media (max-width : 700px) {
+  .banner {
+    position: relative;
+    height: 200px;
+  }
+
+  .carousel-inner {
+    height: 200px;
+  }
+
+  .banner-heading .btn {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width : 900px) and (min-width:701px) {
+  .banner {
+    position: relative;
+    height: 400px;
+  }
+
+  .carousel-inner {
+    height: 400px;
+  }
+
+  .banner-heading .btn {
+    width: 150px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 3em;
+  }
+}
+
+/* end banner */
+
+/* about us */
+.content {
+  position: relative;
+  box-sizing: border-box;
+}
+
+#aboutus .carousel-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#aboutus .text-carousel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#aboutus .image-carousel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 80%;
+  border-radius: 50%;
+}
+
+/* end about us */
+
+/* footer */
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(81, 82, 73);
+  box-shadow: 0 0 10px 0 rgb(59, 59, 59),
+    0 0 10px 0 rgb(81, 82, 73) inset;
+  text-align: center;
+  line-height: 100px;
+  font-size: 3em;
+}
+
+/* end footer */

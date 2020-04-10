@@ -1,0 +1,18 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+<h1>Articles</h1>
+<ul>
+    {% for donatelist in object_list %}
+    <li>{{ donatelist.title }} - {{ donatelist.category }}</li>
+    <li>{{ donatelist.target}}</li>
+    {% if donatelist.receive is None %}
+    <li>0</li>
+    {% else %}
+    <li>{{ donatelist.receive}}</li>
+    {% endif %}
+    <li>{{ donatelist.description}}</li>
+    <li><a href=" {% url 'donate:detail' donatelist.slug %} ">{{ donatelist.description}}</a></li>
+    <img src="media/{{ donatelist.image}}" alt="">
+    {% empty %}
+    <li>No articles yet.</li>
+    {% endfor %}
+</ul>

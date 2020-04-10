@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'wrap/header.html' %}
+</head>
+
+<body>
+    {% include 'wrap/navbar.html' %}
+    {% include 'wrap/banner.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include 'wrap/footer.html' %}
+</body>
+
+{% include 'wrap/script.html' %}
+{% block script %}
+{% endblock script %}
+
+</html>
