@@ -1,0 +1,70 @@
+/* .btn{
+  margin-left: 30px;
+} */
+body{
+  background-color: #204051;
+}
+
+.navbar{
+  background: #8ec6c5;
+}
+hr{
+  padding: 0.2px;
+  background-color: #000000;
+}
+
+.ayoDonasi{
+  background-color: #000000;
+  font-size: 172px;
+  text-decoration-color: #ffffff;
+  color: #ffffff;
+  padding: 300px;
+}
+
+.apa-itu-donasi{
+  padding: 300px;
+}
+.figure{
+  padding: 20px;
+}
+
+.figure-img{
+  border: 2px solid red;
+  border-radius: 75px;
+}
+
+/* page donasi */
+.form-container{
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
+}
+
+/* page report */
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* end page report */
+
+.form-search{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+/* page detail */
+
+.deskripsi{
+  padding-right: 20px;
+}
+
+.progress{
+  background: red;
+}
+
+.proses{
+  padding: 20px;
+}
