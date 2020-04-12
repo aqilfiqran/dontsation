@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 from django.conf import settings
+from django.urls import reverse
 # Create your models here.
 
 
@@ -37,10 +38,12 @@ class Donate(models.Model):
     email = models.EmailField(_('Email'), unique=True)
     donation = models.IntegerField(_("Donasi"))
     confirmation = models.IntegerField(_("Konfirmasi"), editable=False)
-    verify = models.IntegerField(_("Verifikasi Email"), editable=False)
     donateArticle = models.ForeignKey(
         DonateArticle, on_delete=models.CASCADE, editable=False)
-    barcode = models.CharField(_("QrCode"), max_length=200)
+    barcode = models.CharField(_("Code"), max_length=200)
 
     def __str__(self):
         return '{}. {} mendonasikan Rp.{}'.format(self.id, self.name, self.donation)
+
+    def get_absolute_url(self):
+        return reverse("donate:verify")
