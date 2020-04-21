@@ -1,2 +1,9 @@
 <h1>{{ object.title }}</h1>
 <p>{{ object.description }}</p>
+<p>{{ receive }} dari {{object.target}}</p>
+{% if object.target > receive %}
+<p>belum terpenuhi</p>
+{% else %}
+<p>terpenuhi</p>
+{% endif %}
+<a href="{% url 'donate:create' object.id %} ">donasi</a>

@@ -5,7 +5,8 @@ from .models import DonateArticle, Donate
 
 @admin.register(Donate)
 class DonateAdmin(admin.ModelAdmin):
-    list_display = ["name", 'email', 'donation', 'donateArticle']
+    list_display = ["name", 'email', 'donation', 'donateArticle',
+                    'confirmation', 'barcode']
 
 
 admin.site.register(DonateArticle)
