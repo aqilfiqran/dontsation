@@ -3,7 +3,8 @@ from .models import Donate
 
 
 class BarcodeForm(forms.Form):
-    code = forms.CharField(label='code', max_length=200)
+    code = forms.CharField(label='CODE', max_length=200,
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Verification Code..'}))
 
 
 class DonateForm(forms.ModelForm):

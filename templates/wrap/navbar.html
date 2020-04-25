@@ -4,19 +4,45 @@
     <a class="navbar-brand" href="#">
         <img src="{% static 'img/donstation.png'%}" alt="">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar"
+        aria-controls="collapsenavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="collapsenavbar">
         <ul class="navbar-nav mr-auto">
+            {% if page == 'Dontsation : Beranda' %}
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'donate:index' %}">Beranda <span class="sr-only">(current)</span></a>
             </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'donate:index' %}">Beranda <span class="sr-only">(current)</span></a>
+            </li>
+            {% endif %}
+
+            {% if page == 'Dontsation : Verifikasi' %}
+            <li class="nav-item active">
+                <a class="nav-link" href=" {% url 'donate:verify' %} ">Verifikasi</a>
+            </li>
+            {% else %}
             <li class="nav-item">
                 <a class="nav-link" href=" {% url 'donate:verify' %} ">Verifikasi</a>
             </li>
+            {% endif %}
+            {% if page == 'Dontsation : List' %}
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Kategori
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href=" {% url 'donate:list' 'Disabilitas' %} ">Disabilitas</a>
+                    <a class="dropdown-item" href="{% url 'donate:list' 'Panti Asuhan' %}">Panti Asuhan</a>
+                    <a class="dropdown-item" href="{% url 'donate:list' 'Panti Jompo' %}">Panti Jompo</a>
+                </div>
+            </li>
+            {% else %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -28,8 +54,9 @@
                     <a class="dropdown-item" href="{% url 'donate:list' 'Panti Jompo' %}">Panti Jompo</a>
                 </div>
             </li>
+            {% endif %}
         </ul>
-        <form method="POST" class="form-inline">
+        <form method="POST" action='{% url 'donate:index' %}' class="form-inline">
             {% csrf_token %}
             <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-custom my-2 my-sm-0" type="submit">Search</button>

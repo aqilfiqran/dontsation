@@ -11,7 +11,7 @@ class DonateCreateView(CreateView):
     form_class = DonateForm
     template_name = 'donate/create.html'
     extra_context = {
-        'page': 'donasi coy'
+        'page': 'Dontsation : Donasi'
     }
 
     def get_context_data(self, **kwargs):
@@ -35,6 +35,13 @@ class VerificationView(FormView):
     template_name = 'verification/verification.html'
     form_class = BarcodeForm
     success_url = '/valid/'
+    extra_context = {
+        'page': 'Dontsation : Verifikasi'
+    }
+
+    def get_context_data(self, **kwargs):
+        kwargs.update(self.extra_context)
+        return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
         if isCheck(form.cleaned_data['code']) == False:
@@ -48,7 +55,7 @@ class ValidView(TemplateView):
 
 class DonateListView(ListView):
     model = DonateArticle
-    paginate_by = 1
+    paginate_by = 10
 
     def get_queryset(self):
 
@@ -65,7 +72,11 @@ class DonateListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page'] = "Donate List"
+        if self.request.GET.get('page'):
+            context['current'] = int(self.request.GET.get('page'))
+        else:
+            context['current'] = 1
+        context['page'] = "Dontsation : List"
         return context
 
 
@@ -81,7 +92,7 @@ class DonateDetailView(DetailView):
         donators = Donate.objects.filter(donateArticle=donateArticle)
         print(donators)
         context = super().get_context_data(**kwargs)
-        context['page'] = "Donate Detail"
+        context['page'] = "Dontsation : Detail"
 
         for donator in donators:
             receive += donator.donation
@@ -94,7 +105,7 @@ class DonateDetailView(DetailView):
 
 class Index(View):
     extra_context = {
-        'page': 'donasi index',
+        'page': 'Dontsation : Beranda',
     }
 
     def get(self, request):

@@ -1,5 +1,22 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">submit</button>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="verify-content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.code.label}}
+                        {{ form.code}}
+                        <small id="emailHelp" class="form-text text-muted">Please check code verification in your
+                            email</small>
+                    </div>
+                    <button type="submit" class="btn btn-outline-custom">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
