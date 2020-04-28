@@ -7,7 +7,7 @@ urlpatterns = [
     path('', Index.as_view(), name="index"),
     path('list/<str:category>/<str:search>',
          DonateListView.as_view(), name="list"),
-    path('list/<str:category>',
+    path('list/<slug:category>',
          DonateListView.as_view(), name="list"),
     path('detail/<slug:slug>', DonateDetailView.as_view(), name="detail"),
     path('verify/', VerificationView.as_view(), name="verify"),

@@ -55,7 +55,7 @@ class ValidView(TemplateView):
 
 class DonateListView(ListView):
     model = DonateArticle
-    paginate_by = 10
+    paginate_by = 5
 
     def get_queryset(self):
 
@@ -67,7 +67,7 @@ class DonateListView(ListView):
 
         if self.kwargs['category'] != 'all':
             self.queryset = self.model.objects.filter(
-                category=self.kwargs['category'])
+                categoryslug=self.kwargs['category'])
         return super().get_queryset()
 
     def get_context_data(self, **kwargs):
@@ -97,7 +97,7 @@ class DonateDetailView(DetailView):
         for donator in donators:
             receive += donator.donation
 
-        context['donator'] = donators
+        context['donators'] = donators
         context['receive'] = receive
 
         return context

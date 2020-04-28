@@ -23,6 +23,10 @@ class DonateArticle(models.Model):
     update = models.DateTimeField(auto_now_add=True, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE, default=1)
+    created_at = models.DateTimeField(
+        _("Waktu dibuat"), auto_now=False, auto_now_add=True)
+    update_at = models.DateTimeField(
+        _("Waktu diubah"), auto_now=True, auto_now_add=False)
 
     def save(self):
         self.slug = slugify(self.title)

@@ -1,5 +1,15 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">submit</button>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-section">
+    <h1>Masukkan Donasi Anda</h1>
+    <div class="border"></div>
+    <form method="post" class="donate-form">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.email }}
+        {{ form.donation }}
+        <button type="submit" class="donate-btn">submit</button>
+    </form>
+</div>
+{% endblock content %}

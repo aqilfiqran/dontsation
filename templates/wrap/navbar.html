@@ -1,66 +1,113 @@
 {% load static %}
-<!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-custom">
-    <a class="navbar-brand" href="#">
-        <img src="{% static 'img/donstation.png'%}" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar"
-        aria-controls="collapsenavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="collapsenavbar">
-        <ul class="navbar-nav mr-auto">
-            {% if page == 'Dontsation : Beranda' %}
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'donate:index' %}">Beranda <span class="sr-only">(current)</span></a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'donate:index' %}">Beranda <span class="sr-only">(current)</span></a>
-            </li>
-            {% endif %}
-
-            {% if page == 'Dontsation : Verifikasi' %}
-            <li class="nav-item active">
-                <a class="nav-link" href=" {% url 'donate:verify' %} ">Verifikasi</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href=" {% url 'donate:verify' %} ">Verifikasi</a>
-            </li>
-            {% endif %}
-            {% if page == 'Dontsation : List' %}
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Kategori
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href=" {% url 'donate:list' 'Disabilitas' %} ">Disabilitas</a>
-                    <a class="dropdown-item" href="{% url 'donate:list' 'Panti Asuhan' %}">Panti Asuhan</a>
-                    <a class="dropdown-item" href="{% url 'donate:list' 'Panti Jompo' %}">Panti Jompo</a>
-                </div>
-            </li>
-            {% else %}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Kategori
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href=" {% url 'donate:list' 'Disabilitas' %} ">Disabilitas</a>
-                    <a class="dropdown-item" href="{% url 'donate:list' 'Panti Asuhan' %}">Panti Asuhan</a>
-                    <a class="dropdown-item" href="{% url 'donate:list' 'Panti Jompo' %}">Panti Jompo</a>
-                </div>
-            </li>
-            {% endif %}
-        </ul>
-        <form method="POST" action='{% url 'donate:index' %}' class="form-inline">
-            {% csrf_token %}
-            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-custom my-2 my-sm-0" type="submit">Search</button>
-        </form>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
+                aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="icon-menu"></span>
+                <span class="icon-menu"></span>
+                <span class="icon-menu"></span>
+            </button>
+            <a href="{% url 'donate:index' %}" class="navbar-brand"><img src="{% static 'img/donstation.png'%}"
+                    height="40px" width='100px' alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                <li class="nav-item" data-link='/'>
+                    <a class="nav-link" href="{% url 'donate:index' %}">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item" data-link='/verify/'>
+                    <a class="nav-link" href="{% url 'donate:verify' %}">
+                        Verification
+                    </a>
+                </li>
+                <li class="nav-item" data-link='/list/disabilitas'>
+                    <a class="nav-link" href="{% url 'donate:list' 'disabilitas' %}">
+                        Disability
+                    </a>
+                </li>
+                <li class="nav-item" data-link='/list/panti-asuhan'>
+                    <a class="nav-link" href="{% url 'donate:list' 'panti-asuhan' %}">
+                        Panti Asuhan
+                    </a>
+                </li>
+                <li class="nav-item" data-link='/list/panti-jompo'>
+                    <a class="nav-link" href="{% url 'donate:list' 'panti-jompo' %}">
+                        Panti Jompo
+                    </a>
+                </li>
+                <li class="nav-item" data-link='/list/all'>
+                    <a class="nav-link" href="{% url 'donate:list' 'all' %}">
+                        Semua Kategori
+                    </a>
+                </li>
+                {% comment %} <li class="nav-item">
+                    <form method="POST" action='{% url 'donate:index' %}'>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <i class="contact-icon fa fa-user"></i>
+                            <input type="search" class="form-control" id="search" placeholder="search" required
+                                data-error="Please search">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </form>
+                </li> {% endcomment %}
+            </ul>
+        </div>
     </div>
+
+    <!-- Mobile Menu Start -->
+    <ul class="mobile-menu navbar-nav">
+        <li>
+            <a class="page-scroll" href="{% url 'donate:index' %}">
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="page-scroll" href="{% url 'donate:verify' %}">
+                Verification
+            </a>
+        </li>
+        <li>
+            <a class="page-scroll" href="{% url 'donate:list' 'disabilitas' %}">
+                Disability
+            </a>
+        </li>
+        <li>
+            <a class="page-scroll" href="{% url 'donate:list' 'panti-asuhan' %}">
+                Panti Asuhan
+            </a>
+        </li>
+        <li>
+            <a class="page-scroll" href="{% url 'donate:list' 'panti-jompo' %}">
+                Panti Jompo
+            </a>
+        </li>
+        <li>
+            <a class="page-scroll" href="{% url 'donate:list' 'all' %}">
+                semua kategori
+            </a>
+        </li>
+        {% comment %} <li>
+            <div class="page-scroll">
+                <form method="POST" action='{% url 'donate:index' %}'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <i class="contact-icon fa fa-user"></i>
+                        <input type="search" class="form-control" id="search" placeholder="search" required
+                            data-error="Please search">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </form>
+            </div>
+        </li> {% endcomment %}
+    </ul>
+    <!-- Mobile Menu End -->
+
 </nav>
-<!-- Akhir navbar -->
+<!-- Navbar End -->

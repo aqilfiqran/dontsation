@@ -1,29 +1,56 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-<div class="container">
-    <div class="row justify-content-center">
-        <h1>{{ object.title }}</h1>
-    </div>
-    <div class="row content-detail">
-        <div class="col-lg-4">
-            <img src="/media/{{object.image}}" alt="" class="img-fluid">
+<main>
+    <section class="donate-detail">
+        <div class="imagery">
+            <img src="/media/{{object.image}}" class="image" alt="">
         </div>
-        <div class="col-lg-8">
-            <p>{{ object.description }}</p>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{ receive }}" aria-valuemin="0"
-                    aria-valuemax="{{object.target}}">0%</div>
+        <div class="detail">
+            <h1>{{object.title}}</h1>
+            <h3>{{object.description}}</h3>
+            <div class="rank-donator">
+                <h2>capacity</h2>
+                <div class="capacity btn-grid">
+                    {% if donators %}
+                    {% for donator in donators  %}
+                    <div class="btn-wrap">
+                        <button class="top-donate selected" data-toggle="tooltip" data-placement="top"
+                            title="{{donator.donation}}">{{donator.name}}</button>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="btn-wrap">
+                        <button class="top-donate selected">Empty</button>
+                    </div>
+                    {% endif %}
+                </div>
+                <h2>Colours</h2>
+                <div class="colours btn-grid">
+                    <div class="btn-wrap"><button class='colour red' data-name='red' data-colour='red'>merah</button>
+                    </div>
+                    <div class="btn-wrap"><button class='colour yellow' data-name='yellow'
+                            data-colour='yellow'>kuning</button>
+                    </div>
+                    <div class="btn-wrap"><button class='colour green selected' data-name='green'
+                            data-colour='green'>hijau</button>
+                    </div>
+                    <div class="btn-wrap"><button class='colour pink' data-name='pink' data-colour='pink'>hijau</button>
+                    </div>
+                </div>
             </div>
-            <p class='mt-2'>Donasi yang dibutuhkan sebesar {{object.target}}</p>
-            <p class='mt-2'>{{receive}} dari {{object.target}}</p>
-            <a class='btn btn-outline-custom mt-3' href="{% url 'donate:create' object.id %} ">Donasi</a>
+            <div class="progress">
+                <div class="progress-done" data-done="{{receive}}" data-max="{{object.target}}"></div>
+                <span class="progress-detail">{{receive}} dari {{object.target}}</span>
+            </div>
+            <a href="{% url 'donate:create' object.id %}" class="btn-submit">Donasi</a>
         </div>
-    </div>
-</div>
+    </section>
+</main>
+
 {% endblock content %}
 
 {% block script %}
 <script src='{% static 'js/app/progress.js' %}'></script>
+<script src='{% static 'js/app/detail.js' %}'></script>
 {% endblock script %}

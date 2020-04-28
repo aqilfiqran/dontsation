@@ -7,7 +7,12 @@
 </head>
 
 <body>
-    {% include 'wrap/navbar.html' %}
+    <header id="header-wrap">
+        {% include 'wrap/navbar.html' %}
+        {% block banner %}
+        {% include 'wrap/banner.html' %}
+        {% endblock banner %}
+    </header>
 
     {% block content %}
     {% endblock content %}
