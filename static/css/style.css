@@ -3,7 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Rubik",
+    sans-serif;
   font-size: 10px;
   width: 100%;
   min-height: 100vh;
@@ -179,7 +180,8 @@ main {
   padding: 0;
   position: relative;
   box-sizing: border-box;
-  font-family: 'montserrat', sans-serif;
+  font-family: "Rubik",
+    sans-serif;
 }
 
 .donate-detail {
@@ -383,7 +385,8 @@ button.top-donate.selected::after,
 
 /* form */
 .form-section {
-  font-family: "montserrat", sans-serif;
+  font-family: "Rubik",
+    sans-serif;
   background: rgb(255, 255, 255);
   padding: 40px 0;
 }
