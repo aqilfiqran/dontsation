@@ -39,7 +39,7 @@ class DonateArticle(models.Model):
 
 class Donate(models.Model):
     name = models.CharField(_("Nama"), max_length=100)
-    email = models.EmailField(_('Email'), unique=True)
+    email = models.EmailField(_('Email'))
     donation = models.IntegerField(_("Donasi"))
     confirmation = models.IntegerField(_("Konfirmasi"), editable=False)
     donateArticle = models.ForeignKey(

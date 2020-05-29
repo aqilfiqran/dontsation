@@ -10,10 +10,10 @@
             <h1>{{object.title}}</h1>
             <h3>{{object.description}}</h3>
             <div class="rank-donator">
-                <h2>Donator</h2>
+                <h2>Top Donator</h2>
                 <div class="capacity btn-grid">
                     {% if donators %}
-                    {% for donator in donators  %}
+                    {% for donator in donators|slice:":2"  %}
                     <div class="btn-wrap">
                         <button class="top-donate selected" data-toggle="tooltip" data-placement="top"
                             title="{{donator.donation}}">{{donator.name}}</button>
@@ -26,6 +26,7 @@
                     {% endif %}
                 </div>
             </div>
+            <h2>Progress</h2>
             <div class="progress">
                 <div class="progress-done" data-done="{{receive}}" data-max="{{object.target}}"></div>
                 <span class="progress-detail">{{receive}} dari {{object.target}}</span>

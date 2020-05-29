@@ -7,6 +7,10 @@ from .generators import generateCode, sendVerification, isCheck
 # Create your views here.
 
 
+def handler404(request, exception):
+    return render(request, '404.html', {'page': 'Dontsation | 404'})
+
+
 class DonateCreateView(CreateView):
     form_class = DonateForm
     template_name = 'donate/create.html'
@@ -27,19 +31,20 @@ class DonateCreateView(CreateView):
         form.instance.donateArticle = donateArticle
         form.instance.barcode = barcode
 
-        sendVerification(form.instance.email, barcode)
+        sendVerification(form.instance.email, barcode, form.instance.name)
         return super().form_valid(form)
 
 
 class VerificationView(FormView):
     template_name = 'verification/verification.html'
     form_class = BarcodeForm
-    success_url = '/valid/'
+    success_url = '/'
     extra_context = {
-        'page': 'Dontsation : Verifikasi'
+        'page': 'Dontsation : Verifikasi',
     }
 
     def get_context_data(self, **kwargs):
+        self.extra_context['code'] = self.request.GET.get('c')
         kwargs.update(self.extra_context)
         return super().get_context_data(**kwargs)
 
@@ -89,7 +94,8 @@ class DonateDetailView(DetailView):
 
         donateArticle = DonateArticle.objects.only(
             'id').get(slug=self.kwargs['slug'])
-        donators = Donate.objects.filter(donateArticle=donateArticle)
+        donators = Donate.objects.filter(
+            donateArticle=donateArticle, confirmation=1).order_by('-donation')
         print(donators)
         context = super().get_context_data(**kwargs)
         context['page'] = "Dontsation : Detail"

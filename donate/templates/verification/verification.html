@@ -6,7 +6,12 @@
     <div class="border"></div>
     <form method="POST" class="donate-form">
         {% csrf_token %}
-        {{ form.code}}
+        {% if code == None %}
+        {{form.code}}
+        {% else %}
+        <input type="text" name="code" class="form-text" placeholder="Your Verification Code.." value="{{code}}"
+            maxlength="200" required="" id="id_code">
+        {% endif %}
         <button type="submit" class="donate-btn">Submit</button>
     </form>
 </div>
